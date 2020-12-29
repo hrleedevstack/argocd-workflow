@@ -5,7 +5,7 @@ metadata:
   namespace: argo
 
 spec:
-  entrypoint: teststep
+  entrypoint: test-steps
   templates:
   - name: testflow
     daemon: true
