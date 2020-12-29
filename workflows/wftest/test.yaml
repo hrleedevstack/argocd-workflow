@@ -21,7 +21,7 @@ spec:
       command:
       - python
       args: 
-      - '/mainctrfs/code/helloloop.py'
+      - '/code/helloloop.py'
       volumeMounts:
       - name: test-volume
         mountPath: /code
