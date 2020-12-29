@@ -8,7 +8,7 @@ spec:
   entrypoint: test-steps
   volumes:
   - name: test-volume
-    hostpath:
+    hostPath:
       path: /root/argo
       type: Directory
 
