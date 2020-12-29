@@ -9,7 +9,7 @@ spec:
   templates:
 
   - name: testflow
-    # daemon: true
+    daemon: true
     container: 
       image: python:workflow-0.1
       command: ["while true; do", "echo hello", "done"]
@@ -18,5 +18,6 @@ spec:
     steps:
     - - name: step01
         template: testflow  
+
     - - name: step02
         template: testflow
