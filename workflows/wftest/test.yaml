@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  name: test-workflow
+  namespace: argo
+
+spec:
+  entrypoint: teststep
+  templates:
+  - name: testflow
+    container: 
+      image: python:workflow-0.1
+      command: ["while true; do", "echo hello", "done"]
+
+  - name: test-steps
+    steps:
+    - - name: step01
+        daemon: true
+        template: testflow  
+    - - name: step02
+        daemon: true
+        template: testflow
