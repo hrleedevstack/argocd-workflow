@@ -11,7 +11,7 @@ spec:
     hostpath:
       path: /root/argo
       type: Directory
-      
+
   templates:
 
   - name: testflow
@@ -21,7 +21,7 @@ spec:
       command:
       - python
       args: 
-      - '/code/helloloop.py'
+      - '/mainctrfs/code/helloloop.py'
       volumeMounts:
       - name: test-volume
         mountPath: /code
