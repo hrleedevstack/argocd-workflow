@@ -8,6 +8,7 @@ spec:
   entrypoint: teststep
   templates:
   - name: testflow
+    daemon: true
     container: 
       image: python:workflow-0.1
       command: ["while true; do", "echo hello", "done"]
@@ -15,8 +16,6 @@ spec:
   - name: test-steps
     steps:
     - - name: step01
-        daemon: true
         template: testflow  
     - - name: step02
-        daemon: true
         template: testflow
