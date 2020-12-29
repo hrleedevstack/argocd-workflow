@@ -72,8 +72,8 @@ spec:
         volumeMounts:
         - name: test-volume
           mountPath: /code
-        nodeSelector:
-          kubernetes.io/hostname: trtis-worker-2
+      nodeSelector:
+        kubernetes.io/hostname: trtis-worker-2
         
     - name: multiroot
       steps:
