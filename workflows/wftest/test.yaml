@@ -6,13 +6,25 @@ metadata:
 
 spec:
   entrypoint: test-steps
+  volumes:
+  - name: test-volume
+    hostpath:
+      path: /root/argo
+      type: Directory
+
   templates:
 
   - name: testflow
     daemon: true
     container: 
       image: python:workflow-0.1
-      command: ['while true; do echo "hello"; done']
+      command:
+      - python
+      args: 
+      - '/code/helloloop.py'
+      volumeMounts:
+      - name: test-volume
+        mountPath: /code
 
   - name: test-steps
     steps:
