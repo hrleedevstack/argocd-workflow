@@ -12,7 +12,7 @@ spec:
     daemon: true
     container: 
       image: python:workflow-0.1
-      command: ['while true; do', 'echo "hello"', 'done']
+      command: ['while true; do echo "hello"; done']
 
   - name: test-steps
     steps:
