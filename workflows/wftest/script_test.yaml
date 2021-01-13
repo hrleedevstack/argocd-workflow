@@ -1,0 +1,29 @@
+metadata:
+  name: script-template
+  namespace: argo
+spec:
+  entrypoint: scripttest
+  templates:
+    - name: scripttest
+      script:
+        image: 'python:workflow-0.3.5'
+        command:
+          - python
+        source: |
+          from minio import Minio
+
+          miniourl = 'argo-artifacts.storage.svc:9000'
+          accesskey = 'AKIAIOSFODNN7EXAMPLE'
+          secretkey = 'wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY'
+          mc = Minio(miniourl, access_key = accesskey, secret_key = secretkey, secure=False)
+          il = []
+
+          ios = mc.list_objects('input')
+          for i in ios:
+            il.append(i.object_name)
+
+          for i in il:
+            print(i)
+
+  nodeSelector:
+    kubernetes.io/hostname: argo-worker-01
