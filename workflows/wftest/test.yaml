@@ -9,8 +9,8 @@ spec:
   volumes:
   - name: test-volume
     hostPath:
-#      path: /root/argo
-      path: /home/azureuser/scripts
+      path: /root/argo
+#      path: /home/azureuser/scripts
       type: Directory
 
   templates:
