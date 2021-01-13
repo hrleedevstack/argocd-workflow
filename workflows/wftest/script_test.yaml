@@ -28,4 +28,4 @@ spec:
             print(i)
 
   nodeSelector:
-    kubernetes.io/hostname: trtis-worker-1
+    kubernetes.io/hostname: trtis-worker-2
