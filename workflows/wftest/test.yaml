@@ -18,7 +18,7 @@ spec:
   - name: testflow
     daemon: true
     container: 
-      image: python:workflow-0.1
+      image: python:workflow-0.3.5
       command:
       - python
       args: 
@@ -27,7 +27,7 @@ spec:
       - name: test-volume
         mountPath: /code
     nodeSelector:
-      kubernetes.io/hostname: trtis-worker-1
+      kubernetes.io/hostname: trtis-worker-2
 
   - name: test-steps
     steps:
