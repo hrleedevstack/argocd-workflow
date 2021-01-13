@@ -14,7 +14,6 @@ spec:
         source: |
           from minio import Minio
 
-#          miniourl = 'argo-artifacts.storage.svc:9000'
           miniourl = '20.194.32.137:32595'
           accesskey = 'AKIAIOSFODNN7EXAMPLE'
           secretkey = 'wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY'
