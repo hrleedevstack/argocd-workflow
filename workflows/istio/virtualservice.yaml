@@ -13,7 +13,7 @@ spec:
     route:
     - destination:
         host: istio-rollout-stable
-      weight: 70
+      weight: 50
     - destination:
         host: istio-rollout-canary
-      weight: 30
+      weight: 50
