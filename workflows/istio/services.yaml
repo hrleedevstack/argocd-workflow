@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: istio-rollout-canary
 spec:
+  type: LoadBalancer
   ports:
   - port: 80
     targetPort: http
@@ -17,6 +18,7 @@ kind: Service
 metadata:
   name: istio-rollout-stable
 spec:
+  type: LoadBalancer
   ports:
   - port: 80
     targetPort: http
