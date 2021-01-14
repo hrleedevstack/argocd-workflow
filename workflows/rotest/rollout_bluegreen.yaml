@@ -17,10 +17,22 @@ spec:
     spec:
       containers:
       - name: rollouts-demo
-        image: argoproj/rollouts-demo:green
+        image: python:workflow-0.3.5
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
+        command:
+          - python
+        args:
+          - /code/flaskpre.py
+        volumeMounts:
+          - name: code-volume
+            mountPath: /code
+      volumes:
+        - name: code-volume
+          hostPath:
+            path: /root/argo
+            type: Directory            
   strategy:
     blueGreen: 
       # activeService specifies the service to update with the new template hash at time of promotion.
