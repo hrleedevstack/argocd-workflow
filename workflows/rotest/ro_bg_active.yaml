@@ -3,6 +3,7 @@ apiVersion: v1
 metadata:
   name: rollout-bluegreen-active
 spec:
+  type: LoadBalancer
   selector:
     app: rollout-bluegreen
   ports:
