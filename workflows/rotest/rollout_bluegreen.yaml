@@ -18,7 +18,7 @@ spec:
       containers:
       - name: rollouts-demo
         image: python:workflow-0.3.5
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
         command:
