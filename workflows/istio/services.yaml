@@ -10,7 +10,7 @@ spec:
     protocol: TCP
     name: http
   selector:
-    app: istio-rollout
+    app: istio-rollout-green
 
 ---
 apiVersion: v1
@@ -25,4 +25,4 @@ spec:
     protocol: TCP
     name: http
   selector:
-    app: istio-rollout
+    app: istio-rollout-blue
