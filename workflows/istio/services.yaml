@@ -5,12 +5,12 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-  - port: 81
+  - port: 80
     targetPort: http
     protocol: TCP
     name: http
   selector:
-    app: istio-rollout-green
+    app: istio-rollout
 
 ---
 apiVersion: v1
@@ -25,4 +25,4 @@ spec:
     protocol: TCP
     name: http
   selector:
-    app: istio-rollout-blue
+    app: istio-rollout
