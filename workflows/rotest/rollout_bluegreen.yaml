@@ -20,7 +20,7 @@ spec:
         image: python:workflow-0.3.5
         imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: 8080
+        - containerPort: 5000
         command:
           - python
         args:
