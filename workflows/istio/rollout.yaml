@@ -15,8 +15,18 @@ spec:
         app: istio-rollout
     spec:
       containers:
-      - name: istio-rollout
+      - name: istio-rollout-blue
         image: argoproj/rollouts-demo:blue
+        ports:
+        - name: http
+          containerPort: 8080
+          protocol: TCP
+        resources:
+          requests:
+            memory: 32Mi
+            cpu: 5m
+      - name: istio-rollout-green
+        image: argoproj/rollouts-demo:green
         ports:
         - name: http
           containerPort: 8080
@@ -27,8 +37,8 @@ spec:
             cpu: 5m
   strategy:
     canary:
-      canaryService: istio-rollout-stable
-      stableService: istio-rollout-canary
+      canaryService: istio-rollout-canary
+      stableService: istio-rollout-stable
       # analysis will be performed in background, while rollout is progressing through its steps
       analysis:
         startingStep: 1   # index of step list, of when to start this analysis
