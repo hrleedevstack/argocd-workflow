@@ -3,17 +3,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: rollout-bluegreen
+  name: rollout-preprocess
 spec:
   replicas: 1
   revisionHistoryLimit: 1
   selector:
     matchLabels:
-      app: rollout-bluegreen
+      app: rollout-preprocess
   template:
     metadata:
       labels:
-        app: rollout-bluegreen
+        app: rollout-preprocess
     spec:
       containers:
       - name: rollouts-demo
