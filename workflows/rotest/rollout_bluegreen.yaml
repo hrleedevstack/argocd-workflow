@@ -24,7 +24,7 @@ spec:
         command:
           - python
         args:
-          - /code/flasinf.py
+          - /code/flaspre.py
         volumeMounts:
           - name: code-volume
             mountPath: /code
