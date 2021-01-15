@@ -1,11 +1,11 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: rollout-bluegreen-preview
+  name: rollout-preprocess-preview
 spec:
   type: LoadBalancer
   selector:
-    app: rollout-bluegreen
+    app: rollout-preprocess
   ports:
   - protocol: TCP
     port: 5000
