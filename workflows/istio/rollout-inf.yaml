@@ -3,6 +3,7 @@ kind: Rollout
 metadata:
   name: inference-rollout
 spec:
+  replicas: 2
   revisionHistoryLimit: 2
   selector:
     matchLabels:
@@ -13,7 +14,7 @@ spec:
         sidecar.istio.io/inject: "true"
       labels:
         app: inference-rollout
-        version: v1.0.0
+        version: v1.0.1
     spec:
       containers:
       - name: inference-rollout

@@ -3,6 +3,7 @@ kind: Rollout
 metadata:
   name: preprocess-rollout
 spec:
+  replicas: 1
   revisionHistoryLimit: 2
   selector:
     matchLabels:
@@ -13,7 +14,7 @@ spec:
         sidecar.istio.io/inject: "true"
       labels:
         app: preprocess-rollout
-        version: v1.0.0
+        version: v1.0.1
     spec:
       containers:
       - name: preprocess-rollout
