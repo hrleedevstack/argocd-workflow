@@ -58,7 +58,7 @@ spec:
           virtualService:
             name: istio-rollout-vsvc
             routes:
-            - primary
+            - preprocess
       steps:
       - setWeight: 10
       - pause: {duration: 20s}         # pause indefinitely
