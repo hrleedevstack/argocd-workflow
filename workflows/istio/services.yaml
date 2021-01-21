@@ -26,3 +26,33 @@ spec:
     name: http
   selector:
     app: preprocess-rollout
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: inference-rollout-canary
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 5000
+    targetPort: http
+    protocol: TCP
+    name: http
+  selector:
+    app: inference-rollout
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: inference-rollout-stable
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 5000
+    targetPort: http
+    protocol: TCP
+    name: http
+  selector:
+    app: inference-rollout

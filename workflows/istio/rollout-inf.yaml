@@ -1,27 +1,27 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: preprocess-rollout
+  name: inference-rollout
 spec:
   revisionHistoryLimit: 2
   selector:
     matchLabels:
-      app: preprocess-rollout
+      app: inference-rollout
   template:
     metadata:
       annotations:
         sidecar.istio.io/inject: "true"
       labels:
-        app: preprocess-rollout
+        app: inference-rollout
     spec:
       containers:
-      - name: preprocess-rollout
+      - name: inference-rollout
         image: python:workflow-0.3.5
         imagePullPolicy: IfNotPresent
         command:
           - python
         args:
-          - /code/flaskpre.py
+          - /code/flaskinf.py
         volumeMounts:
           - name: code-volume
             mountPath: /code
@@ -39,8 +39,8 @@ spec:
             path: /root/argo
   strategy:
     canary:
-      canaryService: preprocess-rollout-canary
-      stableService: preprocess-rollout-stable
+      canaryService: inference-rollout-canary
+      stableService: inference-rollout-stable
       # analysis will be performed in background, while rollout is progressing through its steps
       analysis:
         startingStep: 1   # index of step list, of when to start this analysis
@@ -58,7 +58,7 @@ spec:
           virtualService:
             name: istio-rollout-vsvc
             routes:
-            - primary
+            - inference
       steps:
       - setWeight: 10
       - pause: {duration: 20s}         # pause indefinitely

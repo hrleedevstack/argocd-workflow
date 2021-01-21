@@ -9,11 +9,19 @@ spec:
   - istio-rollout.apps.argoproj.io
   - istio-rollout.local
   http:
-  - name: primary
+  - name: preprocess
     route:
     - destination:
         host: preprocess-rollout-stable
       weight: 50
     - destination:
         host: preprocess-rollout-canary
+      weight: 50
+  - name: inference
+    route:
+    - destination:
+        host: inference-rollout-stable
+      weight: 50
+    - destination:
+        host: inference-rollout-canary
       weight: 50
