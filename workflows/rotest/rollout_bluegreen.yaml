@@ -1,0 +1,49 @@
+# This example demonstrates a Rollout using the blue-green update strategy, which contains a manual
+# gate before promoting the new stack.
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: rollout-preprocess
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: rollout-preprocess
+  template:
+    metadata:
+      labels:
+        app: rollout-preprocess
+    spec:
+      containers:
+      - name: rollouts-demo
+        image: python:workflow-0.3.5
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5000
+        command:
+          - python
+        args:
+          - /code/flaskpre.py
+        volumeMounts:
+          - name: code-volume
+            mountPath: /code
+      volumes:
+        - name: code-volume
+          hostPath:
+            path: /root/argo
+            type: Directory            
+  strategy:
+    blueGreen: 
+      # activeService specifies the service to update with the new template hash at time of promotion.
+      # This field is mandatory for the blueGreen update strategy.
+      activeService: rollout-preprocess-active
+      # previewService specifies the service to update with the new template hash before promotion.
+      # This allows the preview stack to be reachable without serving production traffic.
+      # This field is optional.
+      previewService: rollout-preprocess-preview
+      # autoPromotionEnabled disables automated promotion of the new stack by pausing the rollout
+      # immediately before the promotion. If omitted, the default behavior is to promote the new
+      # stack as soon as the ReplicaSet are completely ready/available.
+      # Rollouts can be resumed using: `kubectl argo rollouts resume ROLLOUT`
+      autoPromotionEnabled: true
