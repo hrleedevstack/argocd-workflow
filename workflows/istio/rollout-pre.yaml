@@ -13,6 +13,7 @@ spec:
         sidecar.istio.io/inject: "true"
       labels:
         app: preprocess-rollout
+        version: v1.0.0
     spec:
       containers:
       - name: preprocess-rollout
