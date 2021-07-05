@@ -51,7 +51,7 @@ spec:
 #      hostIPC: true
       nodeSelector:
               #        gpushare: true
-        kubernetes.io/hostname: trtis-worker-2
+        kubernetes.io/hostname: trtis-worker-1
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.imageName }}"
