@@ -59,8 +59,8 @@ spec:
 
           resources:
             limits:
-                    #              nvidia.com/gpu: {{ .Values.image.numGpus }}
-              aliyun.com/gpu-mem: 1
+                nvidia.com/gpu: {{ .Values.image.numGpus }}
+#               aliyun.com/gpu-mem: 1
           env:
                   #            - name: AWS_ACCESS_KEY_ID
                   #              value: AKIAIOSFODNN7EXAMPLE
