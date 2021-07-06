@@ -68,7 +68,7 @@ spec:
               #            - name: AWS_SECRET_ACCESS_KEY
               #              value: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
               #              value: minioadmin
-          args: ["tritonserver", "--model-store=/models"]
+          args: ["tritonserver", "--model-store=/models", "--model-control-mode=explicit"]
 #          args: ["trtserver", "--model-repository=/tmp/models"]
 #          args: ["tritonserver", "--model-repository=s3://20.194.32.137:32595/models", "--model-control-mode=explicit", "--strict-model-config=false", "--exit-on-error=false", "--strict-readiness=false", "--log-info=true", "--log-warning=true", "--log-error=true", "--allow-metrics=true", "--log-verbose=2"]
 #          args: ["tritonserver", "--model-repository=s3://183.111.177.139:9000/models", "--model-control-mode=explicit", "--strict-model-config=false", "--exit-on-error=false", "--strict-readiness=false", "--log-info=true", "--log-warning=true", "--log-error=true", "--log-verbose=2"]
