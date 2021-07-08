@@ -12,20 +12,11 @@ spec:
         command:
           - python
         source: |
-          from minio import Minio
+          import time
 
-          miniourl = '20.194.32.137:32595'
-          accesskey = 'AKIAIOSFODNN7EXAMPLE'
-          secretkey = 'wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY'
-          mc = Minio(miniourl, access_key = accesskey, secret_key = secretkey, secure=False)
-          il = []
-
-          ios = mc.list_objects('input')
-          for i in ios:
-            il.append(i.object_name)
-
-          for i in il:
+          for i in range(1, 100):
             print(i)
+            sleep(2)
 
   nodeSelector:
     kubernetes.io/hostname: trtis-worker-2
