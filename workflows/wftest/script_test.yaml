@@ -16,7 +16,7 @@ spec:
 
           for i in range(1, 100):
             print(i)
-            sleep(2)
+            time.sleep(2)
 
   nodeSelector:
     kubernetes.io/hostname: trtis-worker-2
