@@ -2,12 +2,12 @@ apiVersion: argoproj.io/v1alpha1
 kind: Workflow
 metadata:
   name: hello-argocd-workflow
-  labels:
-    workflows.argoproj.io/archive-strategy: "false"
+  # labels:
+  #   workflows.argoproj.io/archive-strategy: "false"
 spec:
   entrypoint: whalesay
   templates:
-    daemon: true
+    # daemon: true
     name: whalesay
     container:
       image: docker/whalesay:latest
