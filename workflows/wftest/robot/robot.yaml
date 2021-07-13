@@ -33,9 +33,9 @@ spec:
     outputs:
       artifacts:
       - name: output
-        path: /code/output.xml
+        path: output.xml
       - name: log
-        path: /code/log.html
+        path: log.html
       - name: report
-        path: /code/report.html
+        path: report.html
 
