@@ -3,8 +3,6 @@ kind: Workflow
 metadata:
   name: fastapi-server
   namespace: argo
-  labels:
-    app: fastapi
 
 spec:
   entrypoint: fastapi
@@ -49,4 +47,4 @@ spec:
     protocol: TCP
     name: http
   selector:
-    app: fastapi
+    workflows.argoproj.io/workflow: fastapi-server
