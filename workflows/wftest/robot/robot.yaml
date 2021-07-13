@@ -34,8 +34,14 @@ spec:
       artifacts:
       - name: output
         path: output.xml
+        archive:
+          none: {}
       - name: log
         path: log.html
+        archive:
+          none: {}
       - name: report
         path: report.html
+        archive:
+          none: {}
 
