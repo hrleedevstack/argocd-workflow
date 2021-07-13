@@ -3,10 +3,11 @@ kind: Service
 metadata:
   name: fastapi-server-service
 spec:
-  type: LoadBalancer
+  type: NodePort
   ports:
   - port: 5050
     targetPort: http
+    nodePort: 32323
     protocol: TCP
     name: http
   selector:
