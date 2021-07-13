@@ -28,11 +28,3 @@ spec:
         mountPath: /code
     nodeSelector:
       kubernetes.io/hostname: trtis-worker-2
-
-  - name: test-steps
-    steps:
-    - - name: step01
-        template: testflow  
-
-    - - name: step02
-        template: testflow
