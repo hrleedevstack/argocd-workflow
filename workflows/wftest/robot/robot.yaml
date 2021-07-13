@@ -27,8 +27,15 @@ spec:
       - '/code/test-api.robot'
       volumeMounts:
       - name: test-volume
-        mountPath: /code
-      
+        mountPath: /code  
     nodeSelector:
       kubernetes.io/hostname: trtis-worker-2
+    outputs:
+      artifacts:
+      - name: output
+        path: /code/output.xml
+      - name: log
+        path: /code/log.html
+      - name: report
+        path: /code/report.html
 
