@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Workflow
 metadata:
   name: fastapi-server
-  app: fastapi-server
+  app: fastapi
   namespace: argo
 
 spec:
