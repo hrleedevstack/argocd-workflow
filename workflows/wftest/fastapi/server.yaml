@@ -26,5 +26,9 @@ spec:
       volumeMounts:
       - name: test-volume
         mountPath: /code
+      ports:
+        - containerPort: 5050
+          name: http
+      
     nodeSelector:
       kubernetes.io/hostname: trtis-worker-2
