@@ -23,7 +23,7 @@ spec:
       - robot
       args: 
       - '--name apitest'
-      - '/code/apitest.robot'
+      - '/code/test-api.robot'
       volumeMounts:
       - name: test-volume
         mountPath: /code
