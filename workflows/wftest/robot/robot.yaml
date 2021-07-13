@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  name: robot-framework
+  namespace: argo
+
+spec:
+  entrypoint: robot
+  volumes:
+  - name: test-volume
+    hostPath:
+      path: /root/argo
+#      path: /home/azureuser/scripts
+      type: Directory
+
+  templates:
+
+  - name: robot
+#    daemon: true
+    container: 
+      image: python:workflow-0.4.0
+      command:
+      - robot
+      args: 
+      - '--name apitest'
+      - '/code/apitest.robot'
+      volumeMounts:
+      - name: test-volume
+        mountPath: /code
+      
+    nodeSelector:
+      kubernetes.io/hostname: trtis-worker-2
+
