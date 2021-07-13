@@ -22,7 +22,8 @@ spec:
       command:
       - robot
       args: 
-      - {'--name': apitest'}
+      - '--name'
+      - 'api-test'
       - '/code/test-api.robot'
       volumeMounts:
       - name: test-volume
