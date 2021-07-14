@@ -2,19 +2,12 @@ apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
   name: fastapi-server
-  namespace: argo
-
 spec:
   replicas: 1
   revisionHostoryLimit: 2
   selector:
     matchLabels:
       app: fastapi-server
-  volumes:
-  - name: test-volume
-    hostPath:
-      path: /root/argo
-      type: Directory
   templates:
     metadata:
       annotations:
@@ -37,8 +30,14 @@ spec:
         ports:
           - containerPort: 5050
             name: http
+      volumes:
+      - name: test-volume
+        hostPath:
+          path: /root/argo
+          type: Directory
     nodeSelector:
       kubernetes.io/hostname: trtis-worker-2
+
   strategy:
     canary:
       canaryService: fastapi-server-canary
