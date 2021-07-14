@@ -51,8 +51,8 @@ spec:
           value: canary
         - name: namespace
           valueFrom:
-          fieldRef:
-            fieldPath: metadata.namespace
+            fieldRef:
+              fieldPath: metadata.namespace
       trafficRouting:
         istio:
           virtualService:
