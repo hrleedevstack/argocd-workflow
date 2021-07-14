@@ -8,8 +8,6 @@ spec:
   selector:
     matchLabels:
       app: fastapi-server
-  nodeSelector:
-    kubernetes.io/hostname: trtis-worker-2
   template:
     metadata:
       annotations:
@@ -37,6 +35,8 @@ spec:
         hostPath:
           path: /root/argo
           type: Directory
+      nodeSelector:
+        kubernetes.io/hostname: trtis-worker-2
 
   strategy:
     canary:
