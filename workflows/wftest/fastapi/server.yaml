@@ -27,8 +27,8 @@ spec:
         @app.get('/test')
         def test():
           return 'hello'
-
-        uvicorn.run('fastapitest:app', port=5050, host='0.0.0.0')
+        if __name__ == '__main__':
+          uvicorn.run('fastapitest:app', port=5050, host='0.0.0.0')
       
     nodeSelector:
       kubernetes.io/hostname: trtis-worker-2
