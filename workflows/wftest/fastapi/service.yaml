@@ -3,11 +3,12 @@ kind: Service
 metadata:
   name: fastapi-server-canary
 spec:
-  type: NodePort
+  # type: NodePort
+  type: LoadBalancer
   ports:
   - port: 5050
     targetPort: http
-    nodePort: 32323
+    # nodePort: 32323
     protocol: TCP
     name: http
   selector:
@@ -19,11 +20,12 @@ kind: Service
 metadata:
   name: fastapi-server-stable
 spec:
-  type: NodePort
+  # type: NodePort
+  type: LoadBalancer
   ports:
   - port: 5050
     targetPort: http
-    nodePort: 32323
+    # nodePort: 32323
     protocol: TCP
     name: http
   selector:
