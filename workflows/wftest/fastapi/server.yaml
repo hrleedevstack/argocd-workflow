@@ -10,26 +10,25 @@ spec:
   - name: test-volume
     hostPath:
       path: /root/argo
+#      path: /home/azureuser/scripts
       type: Directory
 
   templates:
+
   - name: fastapi
+#    daemon: true
     container: 
       image: python:workflow-0.3.5
       command:
       - python
-      source: | 
-        import uvicorn
-        from fastapi import FastAPI
-
-        app = FastAPI()
-
-        @app.get('/test')
-        def test():
-          return 'hello'
-        if __name__ == '__main__':
-          uvicorn.run('fastapitest:app', port=5050, host='0.0.0.0')
+      args: 
+      - '/code/fastapitest.py'
+      volumeMounts:
+      - name: test-volume
+        mountPath: /code
+      ports:
+        - containerPort: 5050
+          name: http
       
     nodeSelector:
       kubernetes.io/hostname: trtis-worker-2
-
