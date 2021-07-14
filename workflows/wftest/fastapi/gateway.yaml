@@ -7,8 +7,8 @@ spec:
     istio: ingressgateway
   servers:
   - port:
-      number: 5050
+      number: 80
       name: http
       protocol: HTTP
     hosts:
-    - "*"
+    - "*.devstack.co.kr"
