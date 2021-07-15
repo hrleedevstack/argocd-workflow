@@ -14,7 +14,7 @@ spec:
         sidecar.istio.io/inject: "true"
       labels:
         app: fastapi-server
-        version: v1.0.3
+        version: v1.0.4
     spec:
       containers:
       - name: fastapi-server
