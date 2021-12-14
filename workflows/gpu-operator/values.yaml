@@ -91,7 +91,7 @@ driver:
   imagePullSecrets: []
   rdma:
     enabled: false
-    useHostMofed: false
+    #useHostMofed: false
   manager:
     image: k8s-driver-manager
     repository: nvcr.io/nvidia/cloud-native
@@ -118,8 +118,8 @@ driver:
   repoConfig:
     configMapName: ""
   # custom ssl key/certificate configuration
-  certConfig:
-    name: ""
+  #certConfig:
+  #  name: ""
   # vGPU licensing configuration
   licensingConfig:
     configMapName: ""
@@ -224,8 +224,8 @@ migManager:
   resources: {}
   config:
     name: ""
-  gpuClientsConfig:
-    name: ""
+  #gpuClientsConfig:
+  #  name: ""
 
 nodeStatusExporter:
   enabled: false
