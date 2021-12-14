@@ -1,0 +1,75 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: triton
+  labels:
+    app: triton
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: triton
+  template:
+    metadata:
+      labels:
+        app: triton
+    spec:
+      nodeSelector:
+        nvidia.com/gpu.present: "true"
+      volumes:
+      - name: model-repo
+        hostPath:
+          path: /data/model_repository
+          type: Directory
+      containers:
+        - name: triton
+          ports:
+          - containerPort: 8000
+            name: http-triton
+          - containerPort: 8001
+            name: grpc-triton
+          - containerPort: 8002
+            name: metrics-triton
+          livenessProbe:
+            httpGet:
+              path: /v2/health/live
+              port: http
+              #          readinessProbe:
+              #            initialDelaySeconds: 10
+              #            periodSeconds: 10 
+              #            httpGet:
+              #              path: /v2/health/ready
+              #              port: http
+          image: "nvcr.io/nvidia/tritonserver:21.11-py3"
+          volumeMounts:
+          - mountPath: /models
+            name: model-repo
+          args: ["tritonserver", "--model-store=/models", "--allow-gpu-metrics=false", "--model-control-mode=poll"]
+          resources:
+            limits:
+              nvidia.com/gpu: 1
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: triton-service
+  labels:
+    app: triton
+spec:
+  selector:
+    app: triton
+  ports:
+    - protocol: TCP
+      port: 8000
+      name: http
+      targetPort: 8000
+    - protocol: TCP
+      port: 8001
+      name: grpc
+      targetPort: 8001
+    - protocol: TCP
+      port: 8002
+      name: metrics
+      targetPort: 8002
+  type: LoadBalancer
+---
