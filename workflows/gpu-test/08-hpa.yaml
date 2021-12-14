@@ -21,7 +21,7 @@ spec:
        averageValue: 2000m
   behavior:
     scaleDown:
-      stabilizationWindowSeconds: 120
+      stabilizationWindowSeconds: 30
       policies:
       - type: Percent
         value: 100
