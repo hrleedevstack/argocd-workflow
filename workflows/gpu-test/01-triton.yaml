@@ -44,7 +44,7 @@ spec:
           volumeMounts:
           - mountPath: /models
             name: model-repo
-          args: ["tritonserver", "--model-store=/models", "--allow-gpu-metrics=false", "--model-control-mode=poll"]
+          args: ["tritonserver", "--model-store=/models", "--allow-gpu-metrics=false", "--model-control-mode=poll", "--log-verbose=4"]
           resources:
             limits:
               nvidia.com/gpu: 1
